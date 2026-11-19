@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Requests — SwapShelf{% endblock %}
+{% block content %}
+<h1>Requests</h1>
+
+<section class="req-section">
+  <h2>Incoming — people want your items</h2>
+  {% if not incoming %}
+    <p class="empty">Nothing yet.</p>
+  {% endif %}
+  {% for r in incoming %}
+  <div class="req-row">
+    <p><strong>{{ r.RequesterName }}</strong> offers <em>{{ r.OfferedTitle }}</em> for your <em>{{ r.RequestedTitle }}</em></p>
+    <div class="req-meta">
+      <span class="status status-{{ r.RequestStatus|lower }}">{{ r.RequestStatus }}</span>
+      {% if r.RequestStatus == 'Pending' %}
+      <form method="POST" action="{{ url_for('respond_request', request_id=r.RequestID, action='accept') }}">
+        <button type="submit" class="small">Accept</button>
+      </form>
+      <form method="POST" action="{{ url_for('respond_request', request_id=r.RequestID, action='reject') }}">
+        <button type="submit" class="small ghost">Reject</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<section class="req-section">
+  <h2>Outgoing — swaps you proposed</h2>
+  {% if not outgoing %}
+    <p class="empty">Nothing yet. <a href="{{ url_for('dashboard') }}">Browse the shelf</a>.</p>
+  {% endif %}
+  {% for r in outgoing %}
+  <div class="req-row">
+    <p>You offered <em>{{ r.OfferedTitle }}</em> to {{ r.OwnerName }} for <em>{{ r.RequestedTitle }}</em></p>
+    <span class="status status-{{ r.RequestStatus|lower }}">{{ r.RequestStatus }}</span>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

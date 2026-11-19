@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Finish signing up — SwapShelf{% endblock %}
+{% block content %}
+<div class="auth-wrap">
+  <div class="libcard">
+    <div class="libcard-head"><span>New card</span><span>SwapShelf</span></div>
+    <h1>One more thing, {{ pending.name.split(' ')[0] }}</h1>
+    <p class="sub">We've got your Google account ({{ pending.email }}) — just need your neighborhood so swappers nearby can find you.</p>
+    <form method="POST" class="stack">
+      <label>Neighborhood
+        <input type="text" name="neighborhood" placeholder="e.g. Indiranagar" required autofocus>
+      </label>
+      <label>City
+        <input type="text" name="city" placeholder="e.g. Bengaluru" required>
+      </label>
+      <button type="submit">Finish setting up</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

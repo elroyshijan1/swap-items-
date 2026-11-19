@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}My items — SwapShelf{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>My shelf</h1>
+  <a class="btn-link" href="{{ url_for('add_item') }}">+ Add item</a>
+</div>
+
+{% if not items %}
+  <p class="empty">Your shelf is empty. <a href="{{ url_for('add_item') }}">Add your first item</a>.</p>
+{% endif %}
+
+<div class="catalog">
+  {% for item in items %}
+  <article class="card">
+    <div class="card-top">
+      <span class="tag">{{ item.Category }}</span>
+      <span class="catno">#{{ '%04d' % item.ItemID }}</span>
+    </div>
+    <h2>{{ item.Title }}</h2>
+    <p class="meta">{{ item.ItemCondition }} · <span class="status status-{{ item.Status|lower }}">{{ item.Status }}</span></p>
+    {% if item.Notes %}<p class="notes">{{ item.Notes }}</p>{% endif %}
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

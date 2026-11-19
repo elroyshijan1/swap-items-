@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Log in — SwapShelf{% endblock %}
+{% block content %}
+<div class="auth-wrap">
+  <div class="libcard">
+    <div class="libcard-rule"></div>
+    <h1>Borrower sign-in</h1>
+    <p class="sub">Trade a book, a board game, a gadget — someone two streets over wants it.</p>
+    <form method="POST" class="stack">
+      <label>Email
+        <input type="email" name="email" required autofocus>
+      </label>
+      <label>Password
+        <input type="password" name="password" required>
+      </label>
+      <button type="submit">Sign in</button>
+    </form>
+    <p class="switch">New here? <a href="{{ url_for('register') }}">Open a shelf</a></p>
+  </div>
+</div>
+{% endblock %}

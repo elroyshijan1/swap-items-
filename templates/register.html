@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Join — SwapShelf{% endblock %}
+{% block content %}
+<div class="auth-wrap">
+  <div class="libcard">
+    <div class="libcard-rule"></div>
+    <h1>Open a shelf</h1>
+    <p class="sub">One card, one neighborhood, everything you're willing to swap.</p>
+    <form method="POST" class="stack">
+      <label>Full name
+        <input type="text" name="full_name" required autofocus>
+      </label>
+      <label>Email
+        <input type="email" name="email" required>
+      </label>
+      <label>Neighborhood
+        <input type="text" name="neighborhood" placeholder="e.g. Indiranagar" required>
+      </label>
+      <label>City
+        <input type="text" name="city" placeholder="e.g. Bengaluru" required>
+      </label>
+      <label>Password
+        <input type="password" name="password" required>
+      </label>
+      <button type="submit">Create account</button>
+    </form>
+    <p class="switch">Already have a card? <a href="{{ url_for('login') }}">Sign in</a></p>
+  </div>
+</div>
+{% endblock %}

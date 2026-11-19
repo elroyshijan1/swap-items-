@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Add item — SwapShelf{% endblock %}
+{% block content %}
+<div class="auth-wrap">
+  <div class="libcard">
+    <div class="libcard-rule"></div>
+    <h1>Add to your shelf</h1>
+    <form method="POST" class="stack">
+      <label>Title
+        <input type="text" name="title" required autofocus>
+      </label>
+      <label>Category
+        <input type="text" name="category" placeholder="Book, Board Game, Gadget…" required>
+      </label>
+      <label>Condition
+        <select name="condition" required>
+          <option value="Like New">Like New</option>
+          <option value="Good">Good</option>
+          <option value="Fair">Fair</option>
+        </select>
+      </label>
+      <label>Notes
+        <textarea name="notes" rows="3" placeholder="Anything a swapper should know"></textarea>
+      </label>
+      <button type="submit">Add item</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
